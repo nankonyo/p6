@@ -32,6 +32,18 @@ class View
             echo $content;
         }
     }
+
+    public static function component($componentPath, $data = [])
+    {
+        $path = __DIR__ . '/../app/views/' . $componentPath . '.php';
+
+        if (file_exists($path)) {
+            extract($data);
+            include $path;
+        } else {
+            echo "Component not found: $componentPath";
+        }
+    }
 }
 
 ?>

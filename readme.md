@@ -1,0 +1,18 @@
+struktur:
+p6
+    app
+        controllers
+        databases
+        models
+        routes
+        views
+    core
+        App.php
+        Controller.php
+        Database.php
+        Route.php
+        View.php
+    Public
+        index.php
+    vendor
+    .env

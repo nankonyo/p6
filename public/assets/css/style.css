@@ -1,0 +1,43 @@
+* {
+    font-family: 'Titillium Web', sans-serif;
+  }
+.h7{
+    font-size: 0.8rem;
+}
+
+.h8{
+    font-size: 0.6rem;
+}
+
+h7{
+    font-size: 0.8rem;
+}
+
+h8{
+    font-size: 0.6rem;
+}
+
+.btn-close.white {
+    filter: invert(1);
+}
+
+.line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

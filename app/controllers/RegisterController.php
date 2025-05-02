@@ -1,0 +1,131 @@
+<?php
+
+namespace App\Controllers;
+
+use Core\Session;
+use App\Models\User;
+use Core\Controller;
+use Core\View;
+
+class RegisterController extends Controller
+{
+    public function index()
+    {
+        View::render('register/index', [
+            'layout' => '_layouts/register',
+            'title' => 'Register - LPAP',
+            'description' => 'description register',
+            'keywords' => 'keywords register',
+            'author' => 'author register',
+            'type' => 'website',
+            'image' => 'image',
+            'robots' => 'index, follow'
+        ]);
+    }
+
+    public function store()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            echo json_encode([
+                'status' => 'error',
+                'messages' => ['Metode tidak diizinkan']
+            ]);
+            return;
+        }
+
+        header('Content-Type: application/json');
+
+        $errors = [];
+
+        // Validasi role
+        if (empty($_POST['id_role']) || !in_array($_POST['id_role'], ['1', '2'])) {
+            $errors[] = 'Role tidak valid';
+        }
+
+        // Validasi password
+
+        if (strlen($_POST['password']) < 6) {
+            $errors[] = 'Kata sandi minimal 6 karakter';
+        }
+
+        if ($_POST['password'] !== $_POST['password_confirm']) {
+            $errors[] = 'Kata sandi tidak cocok';
+        }
+
+        // Validasi email
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Format email tidak valid';
+        }
+
+        // Validasi nomor ponsel
+        if (empty($_POST['phone']) || !preg_match('/^08[0-9]{8,13}$/', $_POST['phone'])) {
+            $errors[] = 'Nomor ponsel tidak valid';
+        }
+
+        $userModel = new User();
+        $email = strtolower($_POST['email']);
+
+        // Validasi email sudah terdaftar
+        if ($userModel->isEmailExists($email)) {
+            $errors[] = 'Email sudah terdaftar';
+        }
+
+        // Validasi nomor ponsel sudah terdaftar
+        if ($userModel->isPhoneExists($_POST['phone'])) {
+            $errors[] = 'Nomor ponsel sudah digunakan';
+        }
+
+        if (empty($_POST['terms']) || $_POST['terms'] != '1') {
+            $errors[] = 'Anda harus menyetujui Syarat dan Ketentuan';
+        }
+
+        // Return jika ada error
+        if (count($errors) > 0) {
+            echo json_encode([
+                'status' => 'error',
+                'messages' => $errors
+            ]);
+            return;
+        }
+
+        // Proses registrasi
+        $baseUsername = explode('@', $email)[0];
+        $username = $userModel->generateUniqueUsername($baseUsername);
+
+        $id_role = (int)$_POST['id_role'];
+        $is_active = $id_role === 1 ? 1 : 0;
+
+        $data = [
+            'username'   => $username,
+            'id_role'    => $id_role,
+            'email'      => $email,
+            'phone'      => $_POST['phone'],
+            'password'   => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            'is_active'  => $is_active,
+        ];
+
+        try {
+            if ($userModel->publicRegister($data)) {
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Pendaftaran berhasil',
+                    'email' => $data['email'],
+                    'phone' => $data['phone']
+                ]);
+            } else {
+                http_response_code(500);
+                echo json_encode([
+                    'status' => 'error',
+                    'messages' => ['Gagal menyimpan data user']
+                ]);
+            }
+        } catch (\PDOException $e) {
+            http_response_code(500);
+            echo json_encode([
+                'status' => 'error',
+                'messages' => ['Terjadi kesalahan sistem']
+            ]);
+        }
+    }
+}

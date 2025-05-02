@@ -3,16 +3,18 @@
 namespace App\Controllers;
 
 use Core\Session;
+use App\Models\User;
 use Core\Controller;
-use Core\Database;
 use Core\View;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
+    
     public function index()
     {
-        View::render('landing/index', [
-            'layout' => '_layouts/landing',
+        // Render tampilan dashboard
+        View::render('dashboard/index', [
+            'layout' => '_layouts/register',  // Menentukan layout yang akan digunakan
             'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
             'description' => 'description home',
             'keywords' => 'keywords home',
