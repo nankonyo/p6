@@ -1,32 +1,17 @@
 
             <style>
+				
 			    .login-card {
 			      max-width: 400px;
 			      padding: 2rem;
 			      border-radius: 10px;
 			      box-shadow: 0 0 15px rgba(0,0,0,0.1);
 			    }
-			    .google-logo {
-			      font-size: 1.8rem;
-			      color: #4285F4;
-			      font-weight: bold;
-			    }
-			    .form-floating label {
-			      color: #6c757d;
-			    }
-			    .form-control:focus {
-			      box-shadow: none;
-			    }
-			    .bi {
-			      vertical-align: -.125em;
-			    }
-			    .h7 {
-			    	font-size: 0.8rem;
-			    }
+
 			  </style>
 				<div class="container">
-					<div class="login-card text-center mx-auto mt-3 mb-5">
-						<div class="mb-3 signin-logo"><img src="/assets/img/logo.png" width="150"></div>
+					<div class="login-card text-center mx-auto my-3 mb-5 bg-body-tertiary">
+						<div class="mb-3 signin-logo"><img src="/assets/img/logo.png" width="80"></div>
 						<h5 class="mb-3">Sign in</h5>
 						<p class="mb-4">Masuk ke Akun kamu!</p>
 						<form method="POST" enctype="multipart/form-data" id="signinForm">
@@ -65,15 +50,15 @@
 				</div>
 
 				<!-- Modal Bootstrap untuk pesan -->
-				<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+				<div class="modal fade mt-5" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header bg-warning text-white">
-								<h6 class="modal-title" id="alertModalLabel">Perhatian</h6>
+						<div class="modal-content border-0">
+							<div class="modal-header bg-info text-white">
+								<h6 class="modal-title" id="alertModalLabel">Informasi</h6>
 								<button type="button" class="btn-close white" data-bs-dismiss="modal"></button>
 							</div>
 							<div class="d-flex d-flex justify-content-center mt-3">
-								<i class="bi bi-exclamation-triangle-fill text-warning" style="font-size:4.5rem;"></i>
+								<i class="bi bi-info-circle-fill text-info" style="font-size:4.5rem;"></i>
 							</div>
 							<div class="modal-body" id="modalMessage"></div>
 						</div>
@@ -91,6 +76,9 @@
 							passwordInput.type = 'password';
 						}
 					});
+					
+
+					// request signin
 
 					$(document).ready(function () {
 						$('#signinForm').on('submit', function (e) {
@@ -102,11 +90,19 @@
 							formData.append('email', $('#emailInput').val());
 							formData.append('password', $('#passwordInput').val());
 
-							// Nonaktifkan tombol dan field saat proses berlangsung
+							// Get the 'redir' query parameter from the URL
+							const urlParams = new URLSearchParams(window.location.search);
+							const redir = urlParams.get('redir') || ''; // If no 'redir' parameter, use an empty string
+
+							// Append the 'redir' to the FormData object
+							formData.append('redir', redir);
+
+							// Disable the button and form fields during the process
 							$('#submitSpinner').removeClass('d-none');
 							$('#submitBtn').prop('disabled', true);
 							$('#signinForm :input').prop('disabled', true);
 
+							// Send AJAX request
 							$.ajax({
 								url: '/auth',
 								type: 'POST',
@@ -117,23 +113,28 @@
 								success: function (response) {
 									if (response.status === 'success') {
 										console.log(response.message);
-										window.location.href = response.redirect;
+										window.location.href = response.redirect; // Redirect to the 'redir' URL from the server response
 									} else {
 										handleError(response.messages || [response.message || 'Terjadi kesalahan saat login.']);
 									}
 								},
 								error: function (xhr) {
 									let messages = ['Respons tidak valid dari server.'];
+									console.log('Raw responseText:', xhr.responseText); // ✅ Log respons mentah dari server
+
 									try {
 										const res = JSON.parse(xhr.responseText);
 										messages = Array.isArray(res.messages) ? res.messages : [res.message || messages[0]];
-									} catch (e) {}
+									} catch (e) {
+										console.log('JSON parse error:', e); // ✅ Log error parsing
+									}
+
 									handleError(messages);
 								},
 								complete: function () {
 									$('#submitSpinner').addClass('d-none');
 									$('#submitBtn').prop('disabled', false);
-									$('#signinForm :input').prop('disabled', false); // Aktifkan kembali semua field
+									$('#signinForm :input').prop('disabled', false);
 								}
 							});
 						});
@@ -149,7 +150,6 @@
 							modal.show();
 						}
 					});
-
 
 					// end request signin
 

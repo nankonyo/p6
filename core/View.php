@@ -3,8 +3,16 @@ namespace Core;
 
 class View
 {
+    protected static $globalData = [];
+
+    public static function setGlobalData(array $data)
+    {
+        self::$globalData = $data;
+    }
+
     public static function render($viewName, $data = [])
     {
+        self::setGlobalData($data); // <-- Tambah baris ini
         $viewPath = __DIR__ . '/../app/views/' . $viewName . '.php';
 
         if (!file_exists($viewPath)) {
@@ -14,12 +22,10 @@ class View
 
         extract($data);
 
-        // Simpan hasil view ke buffer
         ob_start();
         include $viewPath;
         $content = ob_get_clean();
 
-        // Jika ada layout, render layout dan sisipkan $content
         if (isset($layout)) {
             $layoutPath = __DIR__ . '/../app/views/' . $layout . '.php';
             if (file_exists($layoutPath)) {
@@ -28,7 +34,6 @@ class View
                 echo "Layout file not found: " . $layout;
             }
         } else {
-            // Kalau tidak ada layout, langsung echo content
             echo $content;
         }
     }
@@ -38,7 +43,8 @@ class View
         $path = __DIR__ . '/../app/views/' . $componentPath . '.php';
 
         if (file_exists($path)) {
-            extract($data);
+            $mergedData = array_merge(self::$globalData, $data); // <-- Gabungkan
+            extract($mergedData);
             include $path;
         } else {
             echo "Component not found: $componentPath";

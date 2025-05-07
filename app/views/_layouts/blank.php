@@ -20,12 +20,12 @@
         <meta property="og:title" content="<?= $title ?>">
         <meta property="og:description" content="<?= $description ?>">
         <meta property="og:image" content="<?= $image ?>">
-        <meta property="og:url" content="<?= getFullUrl();?>">
-        <meta property="og:type" content="<?= $type?>">
+        <meta property="og:url" content="<?= $full_url;?>">
+        <meta property="og:type" content="<?= $ogType ?>">
 
         <!-- Title -->
         <title><?= $title ?></title>
-        <link rel="canonical" href="<?= getPathOnly();?>">
+        <link rel="canonical" href="<?=$path_only;?>">
 
         <!-- ICON -->
         <link rel="shortcut icon" href="<?= $_ENV['APP_ICON'] ?>">
@@ -46,15 +46,11 @@
     </head>
 
     <body>
-
-        <header>
-            <?php component('_components/navbar-simple'); ?>
-        </header>
-
+        
         <main>
             <?= $content ?>
         </main>
-
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             // img k

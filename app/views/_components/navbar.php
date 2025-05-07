@@ -101,10 +101,10 @@
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:1.2rem;">
                                     <i class="themeIcon bi"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end position-absolute">
-                                    <a class="dropdown-item theme-option" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a>
-                                    <a class="dropdown-item theme-option" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a>
-                                    <a class="dropdown-item theme-option" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
+                                <div class="dropdown-menu dropdown-menu-end position-absolute border-0 p-1">
+                                    <a class="dropdown-item theme-option rounded" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a>
+                                    <a class="dropdown-item theme-option rounded" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a>
+                                    <a class="dropdown-item theme-option rounded" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -122,33 +122,116 @@
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                              <a class="nav-link" style="font-size: 1.3rem;" href="/">Beranda</a>
+                              <a class="nav-link active" style="font-size: 1.1rem;" href="/">Beranda</a>
                             </li>
                             <li id="layanan" class="menu-item">
-                                <a class="nav-link disabled" href="#layanan" style="font-size: 1.3rem;" >
+                                <a class="nav-link" href="#" style="font-size: 1.1rem;" >
                                     Layanan <i class="bi bi-chevron-down h6"></i>
                                 </a>
                                 <div class="dropdown-nav card py-3 overflow-y-auto" style="max-height:500px;">
-                                    <div class="container pt-3 pb-1">
+                                    <div class="container pt-3 pb-2">
                                         <div class="row">
-                                            <div class="col-md-3 p-3 overflow-y-auto overflow-x-hidden card" style="max-height:400px;">
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
                                                 <a class="dropdown-item" href="#" style="font-size:1.4rem;">
                                                     <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
                                                 </a>
-                                                <p class="dropdown-desc line-clamp-2">Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.</p>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
                                             </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
+                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                </a>
+                                                <p class="dropdown-desc line-clamp-2">
+                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                </p>
+                                            </div>
+                                        </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#" style="font-size: 1.3rem;" >Tentang Kami</a>
+                              <a class="nav-link" href="#" style="font-size: 1.1rem;" >Tentang Kami</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#" style="font-size: 1.3rem;" >Klien</a>
+                              <a class="nav-link" href="#" style="font-size: 1.1rem;" >Klien</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#" style="font-size: 1.3rem;" >Kontak</a>
+                              <a class="nav-link" href="#" style="font-size: 1.1rem;" >Kontak</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ms-auto">
@@ -161,10 +244,10 @@
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:1.2rem;">
                                     <i class="themeIcon bi" style="transform: scale(1.3); display: inline-block;"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end position-absolute">
-                                    <a class="dropdown-item theme-option" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a>
-                                    <a class="dropdown-item theme-option" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a>
-                                    <a class="dropdown-item theme-option" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
+                                <div class="dropdown-menu dropdown-menu-end position-absolute px-1 border-0" style="font-size:1.2rem;">
+                                    <a class="dropdown-item theme-option rounded" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a>
+                                    <a class="dropdown-item theme-option rounded" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a>
+                                    <a class="dropdown-item theme-option rounded" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -246,11 +329,11 @@
             <!---------------------- end offcanvas---------------------->
 
              <!---------------------- Modal Modul ---------------------->
-            <div class="modal fade" id="modulModal" tabindex="-1" aria-labelledby="modulModalLabel" aria-hidden="true">
+            <div class="modal fade mt-5" id="modulModal" tabindex="-1" aria-labelledby="modulModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content border-0 pb-4">
                         <div class="modal-header border-0 bg-primary">
-                            <h5 class="modal-title text-white" id="modulModalLabel">Modul LPAP</h5>
+                            <h6 class="modal-title text-white" id="modulModalLabel">Modul LPAP</h6>
                             <button type="button" class="btn-close white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body custom-scroll" id="modalScrollBody">
@@ -297,16 +380,16 @@
                  <!---------------------- END Modal Modul ---------------------->
 
             <!-- Modal Search -->
-            <div class="modal fade mt-3" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal fade mt-5" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-header border-0">
-                            <h5 class="modal-title">Pencarian</h5>
+                            <h6 class="modal-title">Pencarian</h6>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
                             <input type="search" id="searchInput" class="form-control w-100" placeholder="Cari sesuatu...">
-                            <ul id="suggestionList" class="list-group mt-4 d-none">
+                            <ul id="suggestionList" class="list-group mt-4 d-none shadow-none">
                                 <!-------list hire-------->
                             </ul>
                         </div>
@@ -333,7 +416,7 @@
 
                   if (filtered.length > 0 && query.length > 0) {
                     filtered.forEach(item => {
-                      $list.append(`<li class="list-group-item list-group-item-action h7">${item}</li>`);
+                      $list.append(`<li class="list-group-item list-group-item-action h7 p-2 border-0">${item}</li>`);
                     });
                     $list.removeClass('d-none');
                   } else {
@@ -463,7 +546,6 @@
                         toggleNavbarStyle();
                     });
 
-                    // ======== Toggle Navbar Transparent vs Solid ========
                     function toggleNavbarStyle() {
                         let scrollTop = $(window).scrollTop();
                         let currentTheme = $("html").attr("data-bs-theme");
@@ -472,7 +554,7 @@
                             $("#myNav")
                                 .removeClass("navbar-transparent")
                                 .addClass("navbar-solid")
-                                .css("background-color", currentTheme === "dark" ? "#212529" : "#fcfcfc");
+                                .css("background-color", "var(--bs-tertiary-bg)");
                         } else {
                             $("#myNav")
                                 .removeClass("navbar-solid")

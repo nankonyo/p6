@@ -6,22 +6,29 @@ use Core\Session;
 use App\Models\User;
 use Core\Controller;
 use Core\View;
+use App\Helpers\UrlHelpers;
 
 class DashboardController extends Controller
 {
     
     public function index()
     {
-        // Render tampilan dashboard
+        $fullUrl = UrlHelpers::getFullUrl();
+        $pathOnly =UrlHelpers::getPathOnly();
+        $redirSource=UrlHelpers::getRedirSource();
         View::render('dashboard/index', [
-            'layout' => '_layouts/register',  // Menentukan layout yang akan digunakan
+            'layout' => '_layouts/dashboard',  // Menentukan layout yang akan digunakan
             'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
             'description' => 'description home',
             'keywords' => 'keywords home',
             'author' => 'author home',
             'type' => 'website',
             'image' => 'image',
-            'robots' => 'index, follow'
+            'robots' => 'index, follow',
+            'full_url' => $fullUrl,
+            'path_only' => $pathOnly,
+            'redir_source' => $redirSource,
+            'ogType' => 'website'
         ]);
     }
 }

@@ -5,118 +5,147 @@
 						transition: border 0.2s;
 					}
 					.role-card:hover {
-						border-color: #ccc;
+						transform: scale(1.05); /* Slight zoom effect */
+						border-color: #0d6efd; /* Primary color */
 					}
+					
 					.role-card.border-primary {
 						border-color: #0d6efd !important;
 					}
-				</style>
-				<div class="container my-3 card pt-2 pb-5 px-4" style="max-width:550px;">
-
-					<h3 class="my-3 text-primary">
-						Pndaftaran Akun
-						<a href="#" ><i class="bi bi-info-circle h6 position-absolute ms-2"></i></a>
-					</h3>
 					
-					<form method="POST" enctype="multipart/form-data" class="row g-3" id="registerForm">
-						<!-- Role Selection Section -->
-						<div class="mb-4 mt-4">
-							<div class="row g-2">
-								<h6 class="text-primary">Pilih Type akun</h6>
-								<div class="col-6">
-									<div class="card role-card h-100 border-primary" data-role="1" role="button" tabindex="0">
-										<div class="card-body text-center text-primary">
-											<i class="bi bi-person-fill" style="font-size:3rem;"></i>
-											<h6 class="mt-2">Pengguna</h6>
+					::placeholder {
+						opacity: 0.5 !important;
+					}
+
+					.register-card {
+						max-width: 600px;
+						padding: 2rem;
+						border-radius: 10px;
+						box-shadow: 0 0 15px rgba(0,0,0,0.1);
+					}
+
+				</style>
+				<div class="container px-0" id="registerBox">
+
+					<div class="register-card mx-auto my-sm-3 pb-5 bg-body-tertiary px-2 my-0">
+						<div class="d-flex align-items-center position-relative">
+							<img src="/assets/img/akun.png" width="60" class="me-2">
+							<span class="h2 text-primary">Pendaftaran Akun</span>
+							<a href="#" class="h7 ms-1" style="margin-top:-20px;">
+								<i class="bi bi-info-circle h6"></i>
+							</a>
+						</div>
+						<hr class="mb-3">
+						
+						<form method="POST" enctype="multipart/form-data" class="row g-2" id="registerForm">
+							<!-- Role Selection Section -->
+							<div class="mb-4 mt-4">
+								<div class="row g-2">
+									<h6 class="text-primary">Pilih Type akun</h6>
+									<div class="col-4">
+										<div class="card role-card h-100 bg-primary rounded-5" data-role="1" role="button" tabindex="0">
+											<div class="card-body text-center text-white">
+												<i class="bi bi-globe" style="font-size:3rem;"></i>
+												<h6 class="mt-2">Pengguna</h6>
+											</div>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="card role-card h-100 bg-primary rounded-5 opacity-25" data-role="2" role="button" tabindex="0">
+											<div class="card-body text-center text-white">
+												<i class="bi bi-building-fill" style="font-size:3rem;"></i>
+												<h6 class="mt-2">Staff</h6>
+											</div>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="card role-card h-100 bg-primary rounded-5 opacity-25" data-role="3" role="button" tabindex="0">
+											<div class="card-body text-center text-white">
+												<i class="bi bi-building-fill-gear" style="font-size:3rem;"></i>
+												<h6 class="mt-2">Admin</h6>
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-6">
-									<div class="card role-card h-100" data-role="2" role="button" tabindex="0">
-										<div class="card-body text-center text-primary">
-											<i class="bi bi-person-fill-gear" style="font-size:3rem;"></i>
-											<h6 class="mt-2">Staff</h6>
-										</div>
-									</div>
-								</div>
+								<input class="is-valid" type="hidden" name="id_role" id="id_role" value="1">
 							</div>
-							<input class="is-valid" type="hidden" name="id_role" id="id_role" value="1">
-						</div>
 
-						<!-- Email Field -->
-						<div class="col-md-6">
-							<label for="email" class="form-label text-primary">Email</label>
-							<input type="text" class="form-control" id="email" name="email" placeholder="contoh@email.com" autocomplete="off">
-							<div class="valid-feedback"></div>
-							<div class="invalid-feedback"></div>
-						</div>
-
-						<!-- Phone Field -->
-						<div class="col-md-6">
-							<label for="phone" class="form-label text-primary">Nomor Ponsel</label>
-							<input type="tel" class="form-control" id="phone" name="phone" placeholder="081112345678" autocomplete="off">
-							<div class="valid-feedback"></div>
-							<div class="invalid-feedback"></div>
-						</div>
-
-						<!-- Password Field -->
-						<div class="col-md-6 position-relative">
-							<label for="password" class="form-label text-primary">Kata Sandi</label>
-							<input type="password" class="form-control pe-5" id="password" name="password" placeholder="Masukan Kata Sandi" autocomplete="off">
-							<div class="valid-feedback"></div>
-							<div class="invalid-feedback"></div>
-							<i class="bi bi-eye-slash toggle-eye text-muted" data-target="#password" style="position:absolute; right:20px; top:38px; cursor:pointer; font-size:1.2rem;"></i>
-						</div>
-
-						<!-- Password Confirm Field -->
-						<div class="col-md-6 mb-3 position-relative">
-							<label for="password_confirm" class="form-label text-primary">Ulangi Kata Sandi</label>
-							<input type="password" class="form-control pe-5" id="password_confirm" name="password_confirm" placeholder="Ulangi Kata Sandi" autocomplete="off">
-							<div class="valid-feedback"></div>
-							<div class="invalid-feedback"></div>
-							<i class="bi bi-eye-slash toggle-eye text-muted" data-target="#password_confirm" style="position:absolute; right:20px; top:38px; cursor:pointer; font-size:1.2rem;"></i>
-						</div>
-
-						<!-- Terms Checkbox -->
-						<div class="col-12 mb-3">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" id="terms" name="terms" value="1" autocomplete="off">
-								<label class="form-check-label" for="terms">
-									Saya menyetujui <a href="/register/terms" target="_blank">Syarat dan Ketentuan</a>
-								</label>
+							<!-- Email Field -->
+							<div class="col-md-6">
+								<label for="email" class="form-label text-primary m-0">Alamat Email</label>
+								<input type="text" class="form-control form-control-lg" id="email" name="email" autocomplete="off">
 								<div class="valid-feedback"></div>
 								<div class="invalid-feedback"></div>
 							</div>
-						</div>
 
-						<!-- Submit Button -->
-						<button type="submit" class="btn btn-lg btn-primary w-100 d-flex justify-content-center align-items-center" id="submitBtn">
-							<span class="spinner-border me-2 d-none spinner-border-sm border-2" role="status" aria-hidden="true" id="submitSpinner"></span>
-							<span id="submitText">Register</span>
-						</button>
-					</form>
+							<!-- Phone Field -->
+							<div class="col-md-6">
+								<label for="phone" class="form-label text-primary m-0">Nomor Ponsel</label>
+								<input type="tel" class="form-control form-control-lg" id="phone" name="phone" autocomplete="off">
+								<div class="valid-feedback"></div>
+								<div class="invalid-feedback"></div>
+							</div>
 
-					<div id="successMessage" class="d-none text-center mt-4">
-						<div class="alert alert-success p-5 rounded shadow-sm">
-							<i class="bi bi-check-circle-fill text-success mb-3" style="font-size:3rem;"></i>
-							<h4 class="mb-3">Pendaftaran Berhasil!</h4>
-							<p id="successDetail" class="mb-3"></p>
-							<a href="/auth">Ke Halaman Masuk</a>
-						</div>
+							<!-- Password Field -->
+							<div class="col-md-6 position-relative">
+								<label for="password" class="form-label text-primary m-0">Kata Sandi</label>
+								<input type="password" class="form-control form-control-lg pe-5" id="password" name="password" autocomplete="off">
+								<div class="valid-feedback"></div>
+								<div class="invalid-feedback"></div>
+								<i class="bi bi-eye-slash toggle-eye text-muted" data-target="#password" style="position:absolute; right:20px; top:29px; cursor:pointer; font-size:1.6rem;"></i>
+							</div>
+
+							<!-- Password Confirm Field -->
+							<div class="col-md-6 mb-3 position-relative">
+								<label for="password_confirm" class="form-label text-primary m-0">Ulangi Kata Sandi</label>
+								<input type="password" class="form-control form-control-lg pe-5" id="password_confirm" name="password_confirm" autocomplete="off">
+								<div class="valid-feedback"></div>
+								<div class="invalid-feedback"></div>
+								<i class="bi bi-eye-slash toggle-eye text-muted" data-target="#password_confirm" style="position:absolute; right:20px; top:29px; cursor:pointer; font-size:1.6rem;"></i>
+							</div>
+
+							<!-- Terms Checkbox -->
+							<div class="col-12 mb-3">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" id="terms" name="terms" value="1" autocomplete="off">
+									<label class="form-check-label" for="terms">
+										Saya menyetujui <a href="/register/terms" target="_blank">Syarat dan Ketentuan</a>
+									</label>
+									<div class="valid-feedback"></div>
+									<div class="invalid-feedback"></div>
+								</div>
+							</div>
+
+							<!-- Submit Button -->
+							<button type="submit" class="btn btn-lg btn-primary w-100 d-flex justify-content-center align-items-center" id="submitBtn">
+								<span class="spinner-border me-2 d-none spinner-border-sm border-2" role="status" aria-hidden="true" id="submitSpinner"></span>
+								<span id="submitText">Daftar sekarang</span>
+							</button>
+						</form>
+						<span class="float-end pt-4 h7"><?= $credit;?></span>
 					</div>
 
 				</div>
 
+				<div id="successMessage" class="d-none text-center mx-auto" style=max-width:600px;>
+					<div class="alert alert-success p-5 rounded shadow-sm">
+						<i class="bi bi-check-circle-fill text-success mb-3" style="font-size:3rem;"></i>
+						<h4 class="mb-3">Pendaftaran Berhasil!</h4>
+						<p id="successDetail" class="mb-3"></p>
+						<a href="/auth">Ke Halaman Masuk</a>
+					</div>
+				</div>
+
 				<!-- Modal Bootstrap untuk pesan -->
-				<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+				<div class="modal fade mt-5" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header bg-warning text-white">
-								<h6 class="modal-title" id="alertModalLabel">Perhatian</h6>
+						<div class="modal-content border-0">
+							<div class="modal-header bg-info text-white">
+								<h6 class="modal-title" id="alertModalLabel">Informasi</h6>
 								<button type="button" class="btn-close white" data-bs-dismiss="modal"></button>
 							</div>
 							<div class="d-flex d-flex justify-content-center mt-3">
-								<i class="bi bi-exclamation-triangle-fill text-warning" style="font-size:4.5rem;"></i>
+								<i class="bi bi-info-circle-fill text-info" style="font-size:4.5rem;"></i>
 							</div>
 							<div class="modal-body" id="modalMessage"></div>
 						</div>
@@ -127,11 +156,16 @@
 
 					// select role
 
-					document.querySelectorAll('.role-card').forEach(card => {
-						card.addEventListener('click', function () {
-							document.querySelectorAll('.role-card').forEach(c => c.classList.remove('border-primary'));
-							this.classList.add('border-primary');
-							document.getElementById('id_role').value = this.dataset.role;
+					$(document).ready(function () {
+						$('.role-card').on('click', function () {
+							// Hilangkan semua perubahan opacity dan border
+							$('.role-card').removeClass('opacity-100').addClass('opacity-25');
+							
+							// Tambahkan opacity penuh ke elemen yang dipilih
+							$(this).removeClass('opacity-25').addClass('opacity-100');
+							
+							// Set nilai role ke input tersembunyi
+							$('#id_role').val($(this).data('role') || '');
 						});
 					});
 
@@ -151,18 +185,6 @@
 					// field controll
 
 					$(document).ready(function () {
-
-						function adjustEyeIconPosition() {
-							$('#password, #password_confirm').each(function () {
-								const icon = $(this).siblings('.toggle-eye');
-								if ($(this).hasClass('is-valid') || $(this).hasClass('is-invalid')) {
-									icon.css('right', '42px');
-								} else {
-									icon.css('right', '20px');
-								}
-							});
-						}
-
 
 						// Email field restrictions
 						$('#email').on('input', function () {
@@ -258,17 +280,7 @@
 						$('#password, #password_confirm').on('input', function () {
 							validatePasswordFields();
 						});
-
-						// Validasi Checkbox Terms
-						$('#terms').on('change', function () {
-							if ($(this).is(':checked')) {
-								setValid($(this), 'Anda telah menyetujui syarat dan ketentuan.');
-							} else {
-								setInvalid($(this), 'Anda harus menyetujui syarat dan ketentuan.');
-							}
-							validateForm();
-						});
-
+						
 						// Fungsi Validasi Password
 						function validatePasswordFields() {
 							var password = $('#password').val();
@@ -291,6 +303,16 @@
 							adjustEyeIconPosition();
 							validateForm();
 						}
+
+						// Validasi Checkbox Terms
+						$('#terms').on('change', function () {
+							if ($(this).is(':checked')) {
+								setValid($(this), 'Anda telah menyetujui syarat dan ketentuan.');
+							} else {
+								setInvalid($(this), 'Anda harus menyetujui syarat dan ketentuan.');
+							}
+							validateForm();
+						});
 
 						// Fungsi Validasi Global
 						function validateForm() {
@@ -322,7 +344,7 @@
 							$('#password, #password_confirm').each(function () {
 								const icon = $(this).siblings('.toggle-eye');
 								if ($(this).hasClass('is-valid') || $(this).hasClass('is-invalid')) {
-									icon.css('right', '42px');
+									icon.css('right', '46px');
 								} else {
 									icon.css('right', '20px');
 								}
@@ -360,7 +382,7 @@
 								dataType: 'json',
 								success: function (response) {
 									if (response.status === 'success') {
-										$('#registerForm').addClass('d-none');
+										$('#registerBox').addClass('d-none');
 
 										// Ambil data dari backend
 										const email = response.email || '-';
@@ -380,10 +402,15 @@
 
 								error: function (xhr) {
 									let messages = ['Respons tidak valid dari server.'];
+									console.log('Raw responseText:', xhr.responseText); // ✅ Log respons mentah dari server
+
 									try {
 										const res = JSON.parse(xhr.responseText);
 										messages = Array.isArray(res.messages) ? res.messages : [res.message || messages[0]];
-									} catch (e) {}
+									} catch (e) {
+										console.log('JSON parse error:', e); // ✅ Log error parsing
+									}
+
 									handleError(messages);
 								},
 								complete: function () {

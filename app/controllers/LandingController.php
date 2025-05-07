@@ -4,13 +4,18 @@ namespace App\Controllers;
 
 use Core\Session;
 use Core\Controller;
-use Core\Database;
 use Core\View;
+use App\Helpers\DeviceInfoHelper;
+use App\Helpers\UrlHelpers;
+use App\Models\User;
+use App\Models\DeviceInfo;
 
-class HomeController extends Controller
+class LandingController extends Controller
 {
     public function index()
     {
+        $fullUrl = UrlHelpers::getFullUrl();
+        $pathOnly = UrlHelpers::getPathOnly();
         View::render('landing/index', [
             'layout' => '_layouts/landing',
             'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
@@ -19,7 +24,10 @@ class HomeController extends Controller
             'author' => 'author home',
             'type' => 'website',
             'image' => 'image',
-            'robots' => 'index, follow'
+            'robots' => 'index, follow',
+            'full_url' => $fullUrl,
+            'path_only' => $pathOnly,
+            'ogType' => 'website'
         ]);
     }
 }

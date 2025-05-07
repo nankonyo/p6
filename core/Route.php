@@ -61,18 +61,27 @@ class Route
             // Jalankan middleware jika ada
             if (!empty($middlewareList)) {
                 foreach ($middlewareList as $middleware) {
-                    // Pastikan class middleware ada dan dapat dijalankan
-                    if (!class_exists($middleware)) {
-                        throw new \Exception("Middleware class '$middleware' tidak ditemukan.");
+                    if (is_string($middleware)) {
+                        $middleware = [$middleware, 'handle'];
                     }
-
-                    // Pastikan middleware memiliki metode handle()
-                    $middlewareInstance = new $middleware();
-                    if (!method_exists($middlewareInstance, 'handle')) {
-                        throw new \Exception("Middleware class '$middleware' tidak memiliki method 'handle'.");
+                
+                    if (!is_array($middleware) || count($middleware) !== 2) {
+                        throw new \Exception("Format middleware harus array [class, method].");
                     }
-
-                    $middlewareInstance->handle();
+                
+                    [$middlewareClass, $middlewareMethod] = $middleware;
+                
+                    if (!class_exists($middlewareClass)) {
+                        throw new \Exception("Middleware class '$middlewareClass' tidak ditemukan.");
+                    }
+                
+                    $middlewareInstance = new $middlewareClass();
+                
+                    if (!method_exists($middlewareInstance, $middlewareMethod)) {
+                        throw new \Exception("Middleware method '$middlewareMethod' tidak ada di class '$middlewareClass'.");
+                    }
+                
+                    $middlewareInstance->$middlewareMethod();
                 }
             }
 
@@ -90,7 +99,16 @@ class Route
     private static function error($message)
     {
         http_response_code(404);
-        echo "<h1>404 Not Found</h1><p>$message</p>";
+
+        $errorPage ='../public/errors/404.php';
+        if (file_exists($errorPage)) {
+            // Variable $message bisa dikirim ke view jika ingin ditampilkan
+            include $errorPage;
+        } else {
+            // Fallback jika file tidak ditemukan
+            echo "<h1>404 Not Found</h1><p>$message</p>";
+        }
+
         exit;
     }
 }

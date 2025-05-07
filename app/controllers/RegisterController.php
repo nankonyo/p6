@@ -3,23 +3,33 @@
 namespace App\Controllers;
 
 use Core\Session;
-use App\Models\User;
 use Core\Controller;
 use Core\View;
+use App\Helpers\DeviceInfoHelper;
+use App\Helpers\UrlHelpers;
+use App\Models\User;
+use App\Models\DeviceInfo;
 
 class RegisterController extends Controller
 {
     public function index()
     {
+        $fullUrl = UrlHelpers::getFullUrl();
+        $pathOnly = UrlHelpers::getPathOnly();
+        $credit = $_ENV['APP_CREDIT'];
         View::render('register/index', [
-            'layout' => '_layouts/register',
-            'title' => 'Register - LPAP',
-            'description' => 'description register',
-            'keywords' => 'keywords register',
-            'author' => 'author register',
+            'layout' => '_layouts/simple',
+            'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
+            'description' => 'description home',
+            'keywords' => 'keywords home',
+            'author' => 'author home',
             'type' => 'website',
             'image' => 'image',
-            'robots' => 'index, follow'
+            'robots' => 'index, follow',
+            'full_url' => $fullUrl,
+            'path_only' => $pathOnly,
+            'credit' => $credit,
+            'ogType' => 'website'
         ]);
     }
 
@@ -39,7 +49,7 @@ class RegisterController extends Controller
         $errors = [];
 
         // Validasi role
-        if (empty($_POST['id_role']) || !in_array($_POST['id_role'], ['1', '2'])) {
+        if (empty($_POST['id_role']) || !in_array($_POST['id_role'], ['1', '2', '3'])) {
             $errors[] = 'Role tidak valid';
         }
 
