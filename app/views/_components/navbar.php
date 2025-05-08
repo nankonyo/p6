@@ -455,7 +455,7 @@
                     }
 
                     function updateThemeColor(theme) {
-                        let themeColor = theme === "dark" ? "#212529" : "#fcfcfc";
+                        let themeColor = theme === "dark" ? "#2b3035" : "#f8f9fa";
                         $("meta[name='theme-color']").attr("content", themeColor);
                     }
 

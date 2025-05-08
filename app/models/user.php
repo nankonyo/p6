@@ -43,19 +43,11 @@ class User extends Model
         $stmt->execute(['email' => $email]);
         return $stmt->fetchColumn() > 0;
     }
-
-    public function isPhoneExists(string $phone): bool
-    {
-        $pdo = $this->db->getConnection();
-        $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE phone = :phone");
-        $stmt->execute(['phone' => $phone]);
-        return $stmt->fetchColumn() > 0;
-    }
     
-    public function findByEmailOrPhone(string $input): ?array
+    public function findAccount(string $input): ?array
     {
         $pdo = $this->db->getConnection();
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :input OR phone = :input LIMIT 1");
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :input OR username = :input OR phone = :input LIMIT 1");
         $stmt->execute(['input' => $input]);
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $user ?: null;
@@ -65,22 +57,33 @@ class User extends Model
     {
         $pdo = $this->db->getConnection();
         $stmt = $pdo->prepare("INSERT INTO users 
-            (username, email, phone, password, id_role, created_at, updated_at, is_active) 
+            (username, email,  password, id_role, created_at, updated_at, is_active) 
             VALUES 
-            (:username, :email, :phone, :password, :id_role, :created_at, :updated_at, :is_active)");
+            (:username, :email, :password, :id_role, :created_at, :updated_at, :is_active)");
 
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
 
         return $stmt->execute($data);
     }
 
-    public function findById(int $id): ?array
+    public function isEmailVerified($id)
+    {
+        $pdo = $this->db->getConnection(); // ambil objek PDO
+        $stmt = $pdo->prepare("SELECT email_ver_stat FROM users WHERE id = :id LIMIT 1");
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $result ? (bool) $result['email_ver_stat'] : false;
+    }
+
+    public function getEmailById($id): ?string
     {
         $pdo = $this->db->getConnection();
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $stmt = $pdo->prepare("SELECT email FROM users WHERE id = :id LIMIT 1");
         $stmt->execute(['id' => $id]);
-        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $user ?: null;
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $result['email'] ?? null;
     }
 
 }

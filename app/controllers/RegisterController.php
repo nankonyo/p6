@@ -68,22 +68,12 @@ class RegisterController extends Controller
             $errors[] = 'Format email tidak valid';
         }
 
-        // Validasi nomor ponsel
-        if (empty($_POST['phone']) || !preg_match('/^08[0-9]{8,13}$/', $_POST['phone'])) {
-            $errors[] = 'Nomor ponsel tidak valid';
-        }
-
         $userModel = new User();
         $email = strtolower($_POST['email']);
 
         // Validasi email sudah terdaftar
         if ($userModel->isEmailExists($email)) {
             $errors[] = 'Email sudah terdaftar';
-        }
-
-        // Validasi nomor ponsel sudah terdaftar
-        if ($userModel->isPhoneExists($_POST['phone'])) {
-            $errors[] = 'Nomor ponsel sudah digunakan';
         }
 
         if (empty($_POST['terms']) || $_POST['terms'] != '1') {
@@ -110,7 +100,6 @@ class RegisterController extends Controller
             'username'   => $username,
             'id_role'    => $id_role,
             'email'      => $email,
-            'phone'      => $_POST['phone'],
             'password'   => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'is_active'  => $is_active,
         ];
@@ -120,8 +109,7 @@ class RegisterController extends Controller
                 echo json_encode([
                     'status' => 'success',
                     'message' => 'Pendaftaran berhasil',
-                    'email' => $data['email'],
-                    'phone' => $data['phone']
+                    'email' => $data['email']
                 ]);
             } else {
                 http_response_code(500);

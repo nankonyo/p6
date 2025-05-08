@@ -36,7 +36,7 @@
                         $('html').attr('data-bs-theme', appliedTheme);
 
                         // Set meta tag theme-color
-                        const themeColor = appliedTheme === "dark" ? "#212529" : "#fcfcfc";
+                        const themeColor = appliedTheme === "dark" ? "#2b3035" : "#f8f9fa";
                         let $meta = $('meta[name="theme-color"]');
 
                         if ($meta.length === 0) {

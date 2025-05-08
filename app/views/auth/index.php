@@ -3,21 +3,20 @@
 				
 			    .login-card {
 			      max-width: 400px;
-			      padding: 2rem;
 			      border-radius: 10px;
 			      box-shadow: 0 0 15px rgba(0,0,0,0.1);
 			    }
 
 			  </style>
 				<div class="container">
-					<div class="login-card text-center mx-auto my-3 mb-5 bg-body-tertiary">
+					<div class="login-card text-center mx-auto my-3 mb-5 bg-body-tertiary px-3 py-5">
 						<div class="mb-3 signin-logo"><img src="/assets/img/logo.png" width="80"></div>
 						<h5 class="mb-3">Sign in</h5>
 						<p class="mb-4">Masuk ke Akun kamu!</p>
 						<form method="POST" enctype="multipart/form-data" id="signinForm">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="emailInput" placeholder="Email or phone" maxlength="254" autocomplete="off">
-								<label for="emailInput">Email or nomor ponsel</label>
+								<input type="text" class="form-control" id="emailInput" placeholder="Email, Username atau Nomor Ponsel" maxlength="254" autocomplete="off">
+								<label for="emailInput">Email, Username atau Nomor Ponsel</label>
 							</div>
 
 							<div class="form-floating mb-1">
@@ -32,10 +31,6 @@
 
 							<div class="text-start mb-3 text-end">
 								<a href="/auth/forgotpassword" class="text-decoration-none">Lupa Kata Sandi ?</a>
-							</div>
-
-							<div class="text-start small mb-4 h7">
-								Tidak menggunakan perangkat kamu ? Coba masuk dengan lebih privat. <a href="#">Pelajari lebih lanjut</a>
 							</div>
 
 							<div class="d-flex justify-content-between align-items-center">

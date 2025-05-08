@@ -41,23 +41,19 @@ class AuthController extends Controller
             ]);
             return;
         }
-    
+
         header('Content-Type: application/json');
-    
+
         $errors = [];
-    
-        $emailOrPhone = $_POST['email'] ?? '';
+
+        $account = $_POST['email'] ?? '';
         $password     = $_POST['password'] ?? '';
         $redir        = $_POST['redir'] ?? ''; // Fetch the 'redir' parameter from POST
-    
-        if (empty($emailOrPhone)) {
-            $errors[] = 'Email atau nomor ponsel wajib diisi';
+
+        if (is_null($account) || trim($account) === '') {
+            $errors[] = 'Informasi account wajib diisi';
         }
-    
-        if (strlen($password) < 6) {
-            $errors[] = 'Kata sandi minimal 6 karakter';
-        }
-    
+
         if (!empty($errors)) {
             echo json_encode([
                 'status' => 'error',
@@ -65,11 +61,10 @@ class AuthController extends Controller
             ]);
             return;
         }
-    
-        $userModel = new User();
 
-        $user = $userModel->findByEmailOrPhone($emailOrPhone);
-    
+        $userModel = new User();
+        $user = $userModel->findAccount($account);
+
         if (!$user || !password_verify($password, $user['password'])) {
             echo json_encode([
                 'status' => 'error',
@@ -77,7 +72,7 @@ class AuthController extends Controller
             ]);
             return;
         }
-    
+
         if ((int)$user['is_active'] !== 1) {
             echo json_encode([
                 'status' => 'error',
@@ -85,33 +80,28 @@ class AuthController extends Controller
             ]);
             return;
         }
-    
-        $redir = urldecode($redir) ?: '/dashboard'; // Decode the redir and fallback to default if empty
-    
+
+        $redir = urldecode($redir) ?: '/dashboard'; 
+
         // Validate if $redir is a valid URL
         if (!filter_var($redir, FILTER_VALIDATE_URL)) {
             $redir = '/dashboard';
         }
-    
+
         $_SESSION['user_logged_in'] = true;
         $_SESSION['user'] = [
             'id' => $user['id']
         ];
 
         $deviceInfo = DeviceInfoHelper::getDeviceInfo($_SERVER['HTTP_USER_AGENT']);
+        $identifier = DeviceInfoHelper::generateIdentifier($deviceInfo);
 
-        $rawIdentifier = implode('|', [
-            $deviceInfo['browser'],
-            $deviceInfo['os'],
-            $deviceInfo['device'],
-            $deviceInfo['ip_address'],
-            $deviceInfo['host_name'],
-            $deviceInfo['location']['city'],
-            $deviceInfo['location']['region'],
-            $deviceInfo['location']['country']
-        ]);
+        // Cek apakah perangkat sudah terdaftar
+        $deviceModel = new DeviceInfo();
+        $existingDevice = $deviceModel->findByUserId($user['id']);
 
-        $identifier = hash('sha256', $rawIdentifier);
+        // Tentukan nilai stat
+        $stat = $existingDevice ? false : true;
 
         $dataToInsert = [
             'id_user'           => $user['id'],
@@ -124,12 +114,13 @@ class AuthController extends Controller
             'location_city'     => $deviceInfo['location']['city'],
             'location_region'   => $deviceInfo['location']['region'],
             'location_country'  => $deviceInfo['location']['country'],
-            'user_agent'        => substr($deviceInfo['user_agent'], 0, 256)
+            'user_agent'        => substr($deviceInfo['user_agent'], 0, 256),
+            'stat'              => $stat // Tentukan nilai stat
         ];
 
-        $deviceModel = new DeviceInfo();
+        // Simpan atau update data perangkat
         $deviceModel->saveOrUpdate($dataToInsert);
-    
+
         echo json_encode([
             'status' => 'success',
             'message' => 'Login berhasil',

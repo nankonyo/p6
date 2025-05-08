@@ -31,7 +31,9 @@ $router->post('/register', 'RegisterController@store');
 // ===================
 
 // Menambahkan middleware AuthMiddleware pada /dashboard
-$router->get('/dashboard', 'DashboardController@index', [[AuthMiddleware::class, 'dashboardHandle']]);
-$router->get('/account', 'AccountController@index', [[AuthMiddleware::class, 'dashboardHandle']]);
+$router->get('/dashboard', 'DashboardController@index', [[AuthMiddleware::class, 'UserHandle']]);
+$router->get('/account', 'AccountController@index', [[AuthMiddleware::class, 'UserHandle']]);
+$router->get('/verify/device', 'VerifyController@device', [[AuthMiddleware::class, 'UserHandle']]);
+
 
 return $router;

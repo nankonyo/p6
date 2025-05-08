@@ -18,16 +18,16 @@
 					}
 
 					.register-card {
-						max-width: 600px;
+						max-width: 520px;
 						padding: 2rem;
 						border-radius: 10px;
 						box-shadow: 0 0 15px rgba(0,0,0,0.1);
 					}
 
 				</style>
-				<div class="container px-0" id="registerBox">
+				<div class="container" id="registerBox">
 
-					<div class="register-card mx-auto my-sm-3 pb-5 bg-body-tertiary px-2 my-0">
+					<div class="register-card mx-auto my-3 mb-5 bg-body-tertiary px-3 py-5">
 						<div class="d-flex align-items-center position-relative">
 							<img src="/assets/img/akun.png" width="60" class="me-2">
 							<span class="h2 text-primary">Pendaftaran Akun</span>
@@ -39,30 +39,29 @@
 						
 						<form method="POST" enctype="multipart/form-data" class="row g-2" id="registerForm">
 							<!-- Role Selection Section -->
-							<div class="mb-4 mt-4">
+							<div class="mb-2">
 								<div class="row g-2">
-									<h6 class="text-primary">Pilih Type akun</h6>
 									<div class="col-4">
 										<div class="card role-card h-100 bg-primary rounded-5" data-role="1" role="button" tabindex="0">
 											<div class="card-body text-center text-white">
-												<i class="bi bi-globe" style="font-size:3rem;"></i>
-												<h6 class="mt-2">Pengguna</h6>
+												<i class="bi bi-globe" style="font-size:1.8rem;"></i>
+												<h6 class="mt-2 h7">Pengguna</h6>
 											</div>
 										</div>
 									</div>
 									<div class="col-4">
 										<div class="card role-card h-100 bg-primary rounded-5 opacity-25" data-role="2" role="button" tabindex="0">
 											<div class="card-body text-center text-white">
-												<i class="bi bi-building-fill" style="font-size:3rem;"></i>
-												<h6 class="mt-2">Staff</h6>
+												<i class="bi bi-building-fill" style="font-size:1.8rem;"></i>
+												<h6 class="mt-2 h7">Staff</h6>
 											</div>
 										</div>
 									</div>
 									<div class="col-4">
 										<div class="card role-card h-100 bg-primary rounded-5 opacity-25" data-role="3" role="button" tabindex="0">
 											<div class="card-body text-center text-white">
-												<i class="bi bi-building-fill-gear" style="font-size:3rem;"></i>
-												<h6 class="mt-2">Admin</h6>
+												<i class="bi bi-building-fill-gear" style="font-size:1.8rem;"></i>
+												<h6 class="mt-2 h7">Admin</h6>
 											</div>
 										</div>
 									</div>
@@ -71,17 +70,9 @@
 							</div>
 
 							<!-- Email Field -->
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label for="email" class="form-label text-primary m-0">Alamat Email</label>
 								<input type="text" class="form-control form-control-lg" id="email" name="email" autocomplete="off">
-								<div class="valid-feedback"></div>
-								<div class="invalid-feedback"></div>
-							</div>
-
-							<!-- Phone Field -->
-							<div class="col-md-6">
-								<label for="phone" class="form-label text-primary m-0">Nomor Ponsel</label>
-								<input type="tel" class="form-control form-control-lg" id="phone" name="phone" autocomplete="off">
 								<div class="valid-feedback"></div>
 								<div class="invalid-feedback"></div>
 							</div>
@@ -204,21 +195,6 @@
 							$(this).val(emailValue); // Update the email input with the restricted value
 						});
 
-						// Phone field restrictions
-						$('#phone').on('input', function () {
-							let phoneValue = $(this).val();
-
-							// Allow only numbers
-							phoneValue = phoneValue.replace(/[^0-9]/g, '');
-
-							// Limit to 15 characters
-							if (phoneValue.length > 14) {
-								phoneValue = phoneValue.slice(0, 14);
-							}
-
-							$(this).val(phoneValue);
-						});
-
 						// Password field restrictions
 						$('#password').on('input', function () {
 							let passwordValue = $(this).val();
@@ -256,22 +232,6 @@
 								setValid($(this), 'Alamat email valid.');
 							} else {
 								setInvalid($(this), 'Harap masukkan alamat email yang valid.');
-							}
-							validateForm();
-						});
-
-						// Validasi Nomor Ponsel
-						$('#phone').on('input', function () {
-							var phone = $(this).val();
-							var startWith08Regex = /^08/;
-							var lengthValidRegex = /^[0-9]{10,13}$/;
-
-							if (!startWith08Regex.test(phone)) {
-								setInvalid($(this), 'Nomor ponsel harus dimulai dengan 08.');
-							} else if (!lengthValidRegex.test(phone)) {
-								setInvalid($(this), 'Nomor ponsel harus antara 10 hingga 13 digit.');
-							} else {
-								setValid($(this), 'Nomor ponsel valid.');
 							}
 							validateForm();
 						});
@@ -386,10 +346,9 @@
 
 										// Ambil data dari backend
 										const email = response.email || '-';
-										const phone = response.phone || '-';
 
 										const successDetail = `
-											Akun dengan email <strong>${email}</strong> dan nomor ponsel <strong>${phone}</strong>
+											Akun dengan email <strong>${email}</strong>
 											telah berhasil didaftarkan.
 										`;
 
