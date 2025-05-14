@@ -47,15 +47,16 @@
 				<!-- Modal Bootstrap untuk pesan -->
 				<div class="modal fade mt-5" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<div class="modal-content border-0">
+						<div class="modal-content border-0 pb-4 h7">
 							<div class="modal-header bg-info text-white">
 								<h6 class="modal-title" id="alertModalLabel">Informasi</h6>
 								<button type="button" class="btn-close white" data-bs-dismiss="modal"></button>
 							</div>
-							<div class="d-flex d-flex justify-content-center mt-3">
-								<i class="bi bi-info-circle-fill text-info" style="font-size:4.5rem;"></i>
+							<div class="mt-3 text-center px-3">
+								<i class="bi bi-exclamation-circle text-info" style="font-size:3rem;"></i>
+								<div class="modal-body m-0 p-0 text-break" id="modalMessage"></div>
 							</div>
-							<div class="modal-body" id="modalMessage"></div>
+							
 						</div>
 					</div>
 				</div>
@@ -85,19 +86,17 @@
 							formData.append('email', $('#emailInput').val());
 							formData.append('password', $('#passwordInput').val());
 
-							// Get the 'redir' query parameter from the URL
 							const urlParams = new URLSearchParams(window.location.search);
-							const redir = urlParams.get('redir') || ''; // If no 'redir' parameter, use an empty string
-
-							// Append the 'redir' to the FormData object
+							const redir = urlParams.get('redir') || '';
 							formData.append('redir', redir);
 
-							// Disable the button and form fields during the process
+							// Disable form inputs and show spinner
 							$('#submitSpinner').removeClass('d-none');
 							$('#submitBtn').prop('disabled', true);
 							$('#signinForm :input').prop('disabled', true);
 
-							// Send AJAX request
+							let shouldRedirect = false;
+
 							$.ajax({
 								url: '/auth',
 								type: 'POST',
@@ -108,36 +107,42 @@
 								success: function (response) {
 									if (response.status === 'success') {
 										console.log(response.message);
-										window.location.href = response.redirect; // Redirect to the 'redir' URL from the server response
+										shouldRedirect = true;
+										// Redirect cepat tanpa tambah entri histori
+										location.replace(response.redirect);
 									} else {
 										handleError(response.messages || [response.message || 'Terjadi kesalahan saat login.']);
 									}
 								},
 								error: function (xhr) {
 									let messages = ['Respons tidak valid dari server.'];
-									console.log('Raw responseText:', xhr.responseText); // ✅ Log respons mentah dari server
+									console.log('Raw responseText:', xhr.responseText);
 
 									try {
 										const res = JSON.parse(xhr.responseText);
 										messages = Array.isArray(res.messages) ? res.messages : [res.message || messages[0]];
 									} catch (e) {
-										console.log('JSON parse error:', e); // ✅ Log error parsing
+										console.log('JSON parse error:', e);
 									}
 
 									handleError(messages);
 								},
 								complete: function () {
 									$('#submitSpinner').addClass('d-none');
-									$('#submitBtn').prop('disabled', false);
-									$('#signinForm :input').prop('disabled', false);
+
+									// Jangan aktifkan kembali input jika akan redirect
+									if (!shouldRedirect) {
+										$('#submitBtn').prop('disabled', false);
+										$('#signinForm :input').prop('disabled', false);
+									}
 								}
 							});
 						});
 
 						function handleError(errors) {
-							let html = '<ul>';
+							let html = '<ul class="list-group shadow-none">';
 							errors.forEach(function (msg) {
-								html += `<li>${msg}</li>`;
+								html += `<li class="list-group-item border-0 p-0">${msg}</li>`;
 							});
 							html += '</ul>';
 							$('#modalMessage').html(html);

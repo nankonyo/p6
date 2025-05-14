@@ -83,8 +83,8 @@
                     </span>
                     <div class="d-md-none d-flex w-25">
                         <ul class="navbar-nav d-flex flex-row gap-3 me-auto">
-                            <li class="nav-item" style="margin-left:-7px">
-                                <a class="nav-link p-0 m-0" data-bs-toggle="offcanvas" href="#navOffCanvas" role="button" aria-controls="navOffCanvas" style="font-size: 2rem;">
+                            <li class="nav-item">
+                                <a class="nav-link m-0" data-bs-toggle="offcanvas" href="#navOffCanvas" role="button" aria-controls="navOffCanvas" style="font-size: 2rem;">
                                     <i class="bi bi-list"></i>
                                 </a>
                             </li>
@@ -101,7 +101,7 @@
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:1.2rem;">
                                     <i class="themeIcon bi"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end position-absolute border-0 p-1">
+                                <div class="dropdown-menu dropdown-menu-end position-absolute p-1 bg-body-tertiary">
                                     <a class="dropdown-item theme-option rounded" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a>
                                     <a class="dropdown-item theme-option rounded" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a>
                                     <a class="dropdown-item theme-option rounded" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
@@ -128,97 +128,20 @@
                                 <a class="nav-link" href="#" style="font-size: 1.1rem;" >
                                     Layanan <i class="bi bi-chevron-down h6"></i>
                                 </a>
-                                <div class="dropdown-nav card py-3 overflow-y-auto" style="max-height:500px;">
+                                <div class="dropdown-nav card py-3 overflow-y-auto bg-body-tertiary">
                                     <div class="container pt-3 pb-2">
                                         <div class="row">
 
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
+                                            <div class="col-md-3 mb-3">
+                                                <div class="card p-3 overflow-y-auto overflow-x-hidden" style="max-height:400px;">
+                                                    <a class="dropdown-item" href="#" style="font-size:1.4rem;">
+                                                        <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
+                                                    </a>
+                                                    <p class="dropdown-desc line-clamp-2">
+                                                        Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 mb-3">
-                                            <div class="card p-3 overflow-y-auto overflow-x-hidden bg-body-tertiary" style="max-height:400px;">
-                                                <a class="dropdown-item" href="#" style="font-size:1.4rem;">
-                                                    <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="30"> Pelatihan
-                                                </a>
-                                                <p class="dropdown-desc line-clamp-2">
-                                                    Meningkatkan keahlian teknis dan spesifik sesuai dengan bidang kerja pegawai untuk menunjang kinerja profesional secara langsung.
-                                                </p>
-                                            </div>
-                                        </div>
 
                                         </div>
                                     </div>
@@ -229,9 +152,6 @@
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="#" style="font-size: 1.1rem;" >Klien</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#" style="font-size: 1.1rem;" >Kontak</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ms-auto">
@@ -244,7 +164,7 @@
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:1.2rem;">
                                     <i class="themeIcon bi" style="transform: scale(1.3); display: inline-block;"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end position-absolute px-1 border-0" style="font-size:1.2rem;">
+                                <div class="dropdown-menu dropdown-menu-end position-absolute bg-body-tertiary p-1" style="font-size:1.2rem;">
                                     <a class="dropdown-item theme-option rounded" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a>
                                     <a class="dropdown-item theme-option rounded" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a>
                                     <a class="dropdown-item theme-option rounded" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
@@ -299,31 +219,6 @@
                     <a class="nav-link" href="#">Kontak</a>
                   </li>
                 </ul>
-
-                <hr>
-
-                <ul class="navbar-nav mt-3">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
-                      <i class="bi bi-search"></i> Cari
-                    </a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                      <i class="themeIcon bi"></i> Tema
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item theme-option" data-theme="light" href="#"><i class="bi bi-sun"></i> Light</a></li>
-                      <li><a class="dropdown-item theme-option" data-theme="dark" href="#"><i class="bi bi-moon"></i> Dark</a></li>
-                      <li><a class="dropdown-item theme-option" data-theme="auto" href="#"><i class="bi bi-laptop"></i> System Default</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/auth">
-                      <i class="bi bi-person-circle"></i> Masuk
-                    </a>
-                  </li>
-                </ul>
               </div>
             </div>
             <!---------------------- end offcanvas---------------------->
@@ -332,7 +227,7 @@
             <div class="modal fade mt-5" id="modulModal" tabindex="-1" aria-labelledby="modulModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content border-0 pb-4">
-                        <div class="modal-header border-0 bg-primary">
+                        <div class="modal-header border-0 bg-info">
                             <h6 class="modal-title text-white" id="modulModalLabel">Modul LPAP</h6>
                             <button type="button" class="btn-close white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -341,7 +236,7 @@
 
                                 <div class="col-4">
                                     <a href="#" class="text-decoration-none text-dark">
-                                        <div class="text-center h-100 border-0 pt-3">
+                                        <div class="text-center h-100 border-0 pt-0">
                                             <img src="/assets/img/akun.png" class="card-img-top p-4" alt="Gambar">
                                             <div class="card-body p-0">
                                                 <h6 class="card-title text-primary line-clamp-2">Akun Saya</h6>
@@ -352,18 +247,7 @@
 
                                 <div class="col-4">
                                     <a href="#" class="text-decoration-none text-dark">
-                                        <div class="text-center h-100 border-0 pt-3">
-                                            <img src="/assets/img/pelatihan.png" class="card-img-top p-4" alt="Gambar">
-                                            <div class="card-body p-0">
-                                                <h6 class="card-title text-primary line-clamp-2">Pelatihan</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="text-center h-100 border-0 pt-3">
+                                        <div class="text-center h-100 border-0 pt-0">
                                             <img src="/assets/img/drive.png" class="card-img-top p-4" alt="Gambar">
                                             <div class="card-body p-0">
                                                 <h6 class="card-title text-primary line-clamp-2">Penyimpanan</h6>
@@ -371,7 +255,7 @@
                                         </div>
                                     </a>
                                 </div>
-
+                                
                             </div>
                         </div>
                     </div>
@@ -382,14 +266,16 @@
             <!-- Modal Search -->
             <div class="modal fade mt-5" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content border-0">
-                        <div class="modal-header border-0">
-                            <h6 class="modal-title">Pencarian</h6>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-content border-0 pb-3">
+                        <div class="modal-header border-0 flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <h6 class="modal-title mb-0">Pencarian</h6>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <input type="search" id="searchInput" class="form-control w-100" placeholder="Cari sesuatu...">
                         </div>
                         <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
-                            <input type="search" id="searchInput" class="form-control w-100" placeholder="Cari sesuatu...">
-                            <ul id="suggestionList" class="list-group mt-4 d-none shadow-none">
+                            <ul id="suggestionList" class="list-group shadow-none">
                                 <!-------list hire-------->
                             </ul>
                         </div>

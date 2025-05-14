@@ -17,14 +17,14 @@
 				}
 
 				.youtube-bg iframe {
-				width: 100vw;
-				height: 56.25vw; /* 16:9 aspect ratio */
-				min-height: 100vh;
-				min-width: 177.77vh;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+					width: 100vw;
+					height: 56.25vw; /* 16:9 aspect ratio */
+					min-height: 100vh;
+					min-width: 177.77vh;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
 				}
 
 				.bg-overlay-dark {
@@ -45,9 +45,9 @@
 				}
 
 				.hero-content {
-				position: relative;
-				z-index: 2;
-				text-align: center;
+					position: relative;
+					z-index: 2;
+					text-align: center;
 				}
 
 				 /* Animations */
@@ -118,47 +118,50 @@
 					}
 					.cursor {
 						height: 1.5rem;
-						}
 					}
+				}
+
+				/* Untuk ukuran sm dan md (576px – 991.98px) */
+				@media (min-width: 576px) and (max-width: 991.98px) {
+					.hero-sub {
+						font-size: 1.8rem !important;
+					}
+					.cursor {
+						height: 1.5rem;
+					}
+				}
 
 		 	</style>
 
 			<section class="hero d-flex align-items-center justify-content-center">
+				
 				<div class="youtube-bg">
-				<iframe
-				src="https://www.youtube.com/embed/3iTsYcNyjHs?autoplay=1&loop=1&mute=1&rel=0&cc_load_policy=0&controls=0&disablekb=1&fs=0&iv_load_policy=3&playlist=3iTsYcNyjHs"
-				frameborder="0"
-				allow="autoplay"
-				></iframe>
+					<iframe
+					src="https://www.youtube.com/embed/3iTsYcNyjHs?autoplay=1&loop=1&mute=1&rel=0&controls=0&disablekb=1&fs=0&iv_load_policy=3&playlist=3iTsYcNyjHs"
+					frameborder="0"
+					allow="autoplay; encrypted-media"
+					loading="lazy"
+					></iframe>
 				</div>
 
 				<div class="overlay bg-overlay-dark" id="heroOverlay"></div>
 
 				<div class="container hero-content">
-					<img class="my-3 d-sm-none d-block mx-auto" src="/assets/img/logo.png" width="120">
-					<h5 id="hero-title" class="hero-title mb-4">Lembaga Pengembangan Aparatur Pemerintah (LPAP)</h3>
+					<img class="my-3 d-sm-block d-block d-md-none mx-auto" src="/assets/img/logo.png" width="80">
+					<h5 id="hero-title" class="hero-title mb-4">Lembaga Pengembangan Aparatur Pemerintah (LPAP)</h5>
 					<p id="hero-sub" class="hero-sub lead fs-4 mb-4">
-						<span id="typing-text"></span><span class="cursor bg-body-tertiary" id="cursor"></span>
+					<span id="typing-text"></span><span class="cursor bg-body-tertiary" id="cursor"></span>
 					</p>
 					<div class="d-flex flex-column flex-md-row justify-content-center gap-3 hero-buttons" id="hero-buttons">
-						<a href="#page-content" class="btn btn-primary btn-lg px-5">Mulai Sekarang</a>
-						<a href="#learn-more" class="btn btn-outline-info btn-lg px-5">Pelajari Lebih Lanjut</a>
+					<a href="#page-content" class="btn btn-primary btn-lg px-5">Mulai Sekarang</a>
+					<a href="#learn-more" class="btn btn-outline-info btn-lg px-5">Pelajari Lebih Lanjut</a>
 					</div>
 				</div>
 
 			</section>
 
-			<section id="page-content" class="py-5">
-				<div class="container">
-				<h1>About Company</h1>
-				<p>
-					Lembaga Pengembangan Aparatur Pemerintah (LPAP) berdiri pada tahun 2014 memiliki cita cita dan berkomitmen untuk berperan serta dalam membangun sumber daya manusia Indonesia serta menjadi mitra Pemerintah dalam upaya meningkatkan kualitas Aparatur Sipil Negara.
-				</p>
-				<h1>Introduction</h1>
-				<p>
-					Dalam rangka mewujudkan cita-cita Indonesia dibutuhkan aparatur yang profesional, tangguh dan dapat diandalkan dalam menjalankan birokrasi pemerintahan, sehinga menjadi tuntutan dan kewajiban setiap ASN untuk terus melakukan aktualisasi, terus meningkatkan profesionalisme serta paham dan patuh pada peraturan perundangan ASN yang berlaku serta mampu menyesuaikan dengan tuntutan zaman saat ini.
-				</p>
-				</div>
+			<section id="mainBox" class="vh-100">
+				hello
 			</section>
 
 			<script>

@@ -27,10 +27,10 @@
 				</style>
 				<div class="container" id="registerBox">
 
-					<div class="register-card mx-auto my-3 mb-5 bg-body-tertiary px-3 py-5">
+					<div class="register-card mx-auto my-3 mb-5 bg-body-tertiary px-3 pt-3 pb-5">
 						<div class="d-flex align-items-center position-relative">
 							<img src="/assets/img/akun.png" width="60" class="me-2">
-							<span class="h2 text-primary">Pendaftaran Akun</span>
+							<span class="h2 text-primary m-0 p-0">Pendaftaran Akun</span>
 							<a href="#" class="h7 ms-1" style="margin-top:-20px;">
 								<i class="bi bi-info-circle h6"></i>
 							</a>
@@ -110,7 +110,7 @@
 							<!-- Submit Button -->
 							<button type="submit" class="btn btn-lg btn-primary w-100 d-flex justify-content-center align-items-center" id="submitBtn">
 								<span class="spinner-border me-2 d-none spinner-border-sm border-2" role="status" aria-hidden="true" id="submitSpinner"></span>
-								<span id="submitText">Daftar sekarang</span>
+								<span id="submitText">Daftar Sekarang</span>
 							</button>
 						</form>
 						<span class="float-end pt-4 h7"><?= $credit;?></span>
@@ -130,15 +130,16 @@
 				<!-- Modal Bootstrap untuk pesan -->
 				<div class="modal fade mt-5" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<div class="modal-content border-0">
+						<div class="modal-content border-0 pb-4 h7">
 							<div class="modal-header bg-info text-white">
 								<h6 class="modal-title" id="alertModalLabel">Informasi</h6>
 								<button type="button" class="btn-close white" data-bs-dismiss="modal"></button>
 							</div>
-							<div class="d-flex d-flex justify-content-center mt-3">
-								<i class="bi bi-info-circle-fill text-info" style="font-size:4.5rem;"></i>
+							<div class="mt-3 text-center px-3">
+								<i class="bi bi-exclamation-circle text-info" style="font-size:3rem;"></i>
+								<div class="modal-body m-0 p-0 text-break" id="modalMessage"></div>
 							</div>
-							<div class="modal-body" id="modalMessage"></div>
+							
 						</div>
 					</div>
 				</div>
@@ -374,16 +375,16 @@
 								},
 								complete: function () {
 									$('#submitSpinner').addClass('d-none');
-									$('#submitText').text('Register');
+									$('#submitText').text('Daftar Sekarang');
 									$('#registerForm :input').prop('disabled', false);
 								}
 							});
 						});
 
 						function handleError(errors) {
-							let html = '<ul>';
+							let html = '<ul class="list-group shadow-none">';
 							errors.forEach(function (msg) {
-								html += `<li>${msg}</li>`;
+								html += `<li class="list-group-item border-0 p-0">${msg}</li>`;
 							});
 							html += '</ul>';
 							$('#modalMessage').html(html);

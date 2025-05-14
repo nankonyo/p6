@@ -39,7 +39,7 @@ class RegisterController extends Controller
             http_response_code(405);
             echo json_encode([
                 'status' => 'error',
-                'messages' => ['Metode tidak diizinkan']
+                'messages' => ['Metode tidak diizinkan.']
             ]);
             return;
         }
@@ -50,22 +50,22 @@ class RegisterController extends Controller
 
         // Validasi role
         if (empty($_POST['id_role']) || !in_array($_POST['id_role'], ['1', '2', '3'])) {
-            $errors[] = 'Role tidak valid';
+            $errors[] = 'Role tidak valid.';
         }
 
         // Validasi password
 
         if (strlen($_POST['password']) < 6) {
-            $errors[] = 'Kata sandi minimal 6 karakter';
+            $errors[] = 'Kata sandi minimal 6 karakter.';
         }
 
         if ($_POST['password'] !== $_POST['password_confirm']) {
-            $errors[] = 'Kata sandi tidak cocok';
+            $errors[] = 'Kata sandi tidak cocok.';
         }
 
         // Validasi email
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Format email tidak valid';
+            $errors[] = 'Format email tidak valid.';
         }
 
         $userModel = new User();
@@ -73,11 +73,11 @@ class RegisterController extends Controller
 
         // Validasi email sudah terdaftar
         if ($userModel->isEmailExists($email)) {
-            $errors[] = 'Email sudah terdaftar';
+            $errors[] = 'Email sudah terdaftar.';
         }
 
         if (empty($_POST['terms']) || $_POST['terms'] != '1') {
-            $errors[] = 'Anda harus menyetujui Syarat dan Ketentuan';
+            $errors[] = 'Anda harus menyetujui Syarat dan Ketentuan.';
         }
 
         // Return jika ada error
@@ -108,21 +108,21 @@ class RegisterController extends Controller
             if ($userModel->publicRegister($data)) {
                 echo json_encode([
                     'status' => 'success',
-                    'message' => 'Pendaftaran berhasil',
+                    'message' => 'Pendaftaran berhasil.',
                     'email' => $data['email']
                 ]);
             } else {
                 http_response_code(500);
                 echo json_encode([
                     'status' => 'error',
-                    'messages' => ['Gagal menyimpan data user']
+                    'messages' => ['Gagal menyimpan data user.']
                 ]);
             }
         } catch (\PDOException $e) {
             http_response_code(500);
             echo json_encode([
                 'status' => 'error',
-                'messages' => ['Terjadi kesalahan sistem']
+                'messages' => ['Terjadi kesalahan sistem.']
             ]);
         }
     }

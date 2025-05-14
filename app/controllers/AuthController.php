@@ -37,7 +37,7 @@ class AuthController extends Controller
             http_response_code(405);
             echo json_encode([
                 'status' => 'error',
-                'messages' => ['Metode tidak diizinkan']
+                'messages' => ['Metode tidak diizinkan.']
             ]);
             return;
         }
@@ -51,7 +51,11 @@ class AuthController extends Controller
         $redir        = $_POST['redir'] ?? ''; // Fetch the 'redir' parameter from POST
 
         if (is_null($account) || trim($account) === '') {
-            $errors[] = 'Informasi account wajib diisi';
+            $errors[] = 'Email, Username atau Nomor Ponsel tidak boleh kosong.';
+        }
+
+        if (is_null($password) || trim($password) === '') {
+            $errors[] = 'Kata sandi tidak oleh kosong.';
         }
 
         if (!empty($errors)) {
@@ -76,7 +80,7 @@ class AuthController extends Controller
         if ((int)$user['is_active'] !== 1) {
             echo json_encode([
                 'status' => 'error',
-                'messages' => ['Akun belum aktif, Silakan hubungi admin']
+                'messages' => ['Akun belum aktif, Silakan hubungi admin.']
             ]);
             return;
         }
@@ -123,7 +127,7 @@ class AuthController extends Controller
 
         echo json_encode([
             'status' => 'success',
-            'message' => 'Login berhasil',
+            'message' => 'Login berhasil.',
             'redirect' => $redir
         ]);
     }

@@ -17,8 +17,8 @@ class AccountController extends Controller
         $pathOnly =UrlHelpers::getPathOnly();
         $redirSource=UrlHelpers::getRedirSource();
         View::render('account/index', [
-            'layout' => '_layouts/dashboard',  // Menentukan layout yang akan digunakan
-            'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
+            'layout' => '_layouts/dashboard',
+            'title' => 'Account',
             'description' => 'description home',
             'keywords' => 'keywords home',
             'author' => 'author home',

@@ -1,6 +1,6 @@
     
     <div class="sticky-top"> 
-        <nav class="sidebar d-none d-sm-none d-md-none d-lg-block sticky-top" style="min-width:250px;padding-top:5rem;">
+        <nav class="sidebar d-none d-sm-none d-md-none d-lg-block sticky-top" style="min-width:250px;padding-top:5rem;" id="sidebar">
             <a href="#"><i class="bi bi-house-door"></i> Home</a>
             <a href="#"><i class="bi bi-person-badge"></i> Personal info</a>
             <a href="#"><i class="bi bi-shield-lock"></i> Data & privacy</a>

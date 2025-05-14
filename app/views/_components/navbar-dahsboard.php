@@ -3,7 +3,7 @@
                     <div class="container-fluid">
                         <span class="navbar-brand">
                             <img class="p-0 m-0" src="/assets/img/logo.png" width="50"> 
-                            <span class="text-info ms-2" style="font-size:1.2rem;">Akun Saya</span>
+                            <span class="text-info ms-2" style="font-size:1.2rem;"><?= $title ?></span>
                         </span>
                         <div class="d-flex justify-content-between flex-grow-1">
                             <!-- Menu Navbar -->
@@ -12,8 +12,8 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.2rem;">
                                         <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end border-0 px-1 position-absolute" aria-labelledby="userDropdown">
-                                        <li><a class="dropdown-item rounded" href="/account">Akun Saya</a></li>
+                                    <ul class="dropdown-menu dropdown-menu-end position-absolute p-1 bg-body-tertiary" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item rounded" href="/account"><?= $title ?></a></li>
                                         <li><a class="dropdown-item rounded" href="/logout?redir=<?= $redir_source;?>">Logout</a></li>
                                     </ul>
                                 </li>

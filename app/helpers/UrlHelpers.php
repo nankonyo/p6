@@ -28,11 +28,14 @@ class UrlHelpers
         return urlencode($url);
     }
 
-    /**
-     * Menghasilkan URL lengkap saat ini, termasuk query string.
-     *
-     * @return string
-     */
+    public static function getHost(): string
+    {
+        $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'];
+        $requestUri = $_SERVER['REQUEST_URI'];
+        return "{$scheme}://{$host}";
+    }
+
     public static function getFullUrl(): string
     {
         $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';

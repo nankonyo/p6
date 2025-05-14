@@ -89,5 +89,79 @@ class DeviceInfo extends Model
         ]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function updateVerificationToken($id_user, $identifier, $token)
+    {
+        // Query UPDATE untuk menyertakan token dan token_created_at
+        $sql = "UPDATE device_info 
+                SET token = :token, token_created_at = NOW()
+                WHERE id_user = :id_user AND identifier = :identifier";
+
+        $pdo = $this->db->getConnection(); // Pastikan ini mengembalikan objek PDO
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(':id_user', $id_user);
+        $stmt->bindParam(':identifier', $identifier);
+        $stmt->bindParam(':token', $token);
+
+        return $stmt->execute();
+    }
+
+    public function canResendToken($id_user, $identifier): bool
+    {
+        $pdo = $this->db->getConnection();
+        $sql = "SELECT token_created_at FROM device_info 
+                WHERE id_user = :id_user AND identifier = :identifier";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id_user' => $id_user,
+            ':identifier' => $identifier
+        ]);
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$result || !$result['token_created_at']) {
+            return true; // belum ada token sebelumnya, boleh kirim
+        }
+
+        $createdAt = strtotime($result['token_created_at']);
+        return (time() - $createdAt) >= 120; // boleh kirim jika sudah lewat 2 menit
+    }
+
+    public function verifyEmailToken($token)
+    {
+        $pdo = $this->db->getConnection();
+
+        // Ambil user dan identifier berdasarkan token yang belum kadaluarsa (≤ 2 menit)
+        $stmt = $pdo->prepare("
+            SELECT id_user, identifier
+            FROM device_info
+            WHERE token = :token
+            AND token_created_at >= NOW() - INTERVAL '2 minutes'
+        ");
+        $stmt->execute([':token' => $token]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return false; // Token tidak valid atau sudah kadaluarsa
+        }
+
+        $id_user = $row['id_user'];
+        $identifier = $row['identifier'];
+
+        // Update status perangkat menjadi 'true'
+        $update = $pdo->prepare("
+            UPDATE device_info
+            SET stat = 'true'
+            WHERE id_user = :id_user AND identifier = :identifier
+        ");
+        $update->execute([
+            ':id_user' => $id_user,
+            ':identifier' => $identifier
+        ]);
+
+        return $id_user;
+    }
     
 }
