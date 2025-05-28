@@ -42,41 +42,7 @@
 
         <!-- JQURY -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-        <style>
-            .sidebar {
-                padding-top: 2rem;
-                padding-left: 1rem;
-                padding-right: 1rem;
-                font-family: Arial, sans-serif;
-            }
-
-            .sidebar a {
-                display: flex;
-                align-items: center;
-                padding: 10px 12px;
-                margin-bottom: 4px;
-                border-radius: 20px;
-                text-decoration: none;
-                transition: background-color 0.2s;
-                font-size: 14px;
-            }
-
-            .sidebar a:hover {
-                background-color: #f1f3f4;
-            }
-
-            .sidebar a.active {
-                background-color: #e8f0fe;
-                font-weight: 500;
-            }
-
-            .sidebar a i {
-                margin-right: 12px;
-                font-size: 18px;
-            }
-        </style>
-
+        
     </head>
 
     <body>

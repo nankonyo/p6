@@ -24,18 +24,18 @@
             }
           }
       </style>
-      <?php component('_components/navSlide-account'); ?>
+      <?php component('_components/navSlide-dashboard'); ?>
           
        <div class="d-flex">
 
         <!-- Sidebar -->
-        <?php component('_components/sidebar-account'); ?>
+        <?php component('_components/sidebar-dashboard'); ?>    
 
         <!-- Main Content -->
         <div class="container-fluid" id="mainContent">
           <selection>
             <div class="card bg-body-tertiary p-3 border-primary">
-              tes123
+                admin
             </div>
           </selection>
         </div>

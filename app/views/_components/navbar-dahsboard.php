@@ -1,5 +1,5 @@
                
-                <nav class="navbar navbar-expand-md p-0 border-0 shadow-sm bg-body-tertiary fixed-top" style="height:60px;">
+                <nav class="navbar navbar-expand-md p-0 border-0 shadow-sm bg-body-tertiary fixed-top shadow-none" style="height:60px;">
                     <div class="container-fluid">
                         <span class="navbar-brand">
                             <img class="p-0 m-0" src="/assets/img/logo.png" width="50"> 
@@ -7,20 +7,63 @@
                         </span>
                         <div class="d-flex justify-content-between flex-grow-1">
                             <!-- Menu Navbar -->
-                            <ul class="navbar-nav ms-auto">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.2rem;">
-                                        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                            <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+                                <!-- Icon Grid (tanpa dropdown) -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modulModal" style="font-size: 1.6rem;">
+                                        <i class="bi bi-grid-3x3-gap"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end position-absolute p-1 bg-body-tertiary" aria-labelledby="userDropdown">
-                                        <li><a class="dropdown-item rounded" href="/account"><?= $title ?></a></li>
-                                        <li><a class="dropdown-item rounded" href="/logout?redir=<?= $redir_source;?>">Logout</a></li>
-                                    </ul>
+                                </li>
+
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="account" style="font-size: 1.6rem;">
+                                        <i class="bi bi-person-circle"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
+
+                <!---------------------- Modal Modul ---------------------->
+                <div class="modal fade mt-5" id="modulModal" tabindex="-1" aria-labelledby="modulModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content border-0 pb-4">
+                            <div class="modal-header border-0 bg-info">
+                                <h6 class="modal-title text-white" id="modulModalLabel">Menu Pengguna</h6>
+                                <button type="button" class="btn-close white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body custom-scroll" id="modalScrollBody">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+                                    <div class="col-4">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <div class="text-center h-100 border-0 pt-0">
+                                                <img src="/assets/img/akun.png" class="card-img-top p-4" alt="Gambar">
+                                                <div class="card-body p-0">
+                                                    <h6 class="card-title text-primary line-clamp-2">Akun Saya</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <div class="text-center h-100 border-0 pt-0">
+                                                <img src="/assets/img/drive.png" class="card-img-top p-4" alt="Gambar">
+                                                <div class="card-body p-0">
+                                                    <h6 class="card-title text-primary line-clamp-2">Penyimpanan</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!---------------------- END Modal Modul ---------------------->
 
                 <script>
                    

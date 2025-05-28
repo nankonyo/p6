@@ -163,5 +163,4 @@ class DeviceInfo extends Model
 
         return $id_user;
     }
-    
 }

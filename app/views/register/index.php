@@ -17,22 +17,15 @@
 						opacity: 0.5 !important;
 					}
 
-					.register-card {
-						max-width: 520px;
-						padding: 2rem;
-						border-radius: 10px;
-						box-shadow: 0 0 15px rgba(0,0,0,0.1);
-					}
-
 				</style>
-				<div class="container" id="registerBox">
+				<div class="container mt-5" id="registerBox">
 
-					<div class="register-card mx-auto my-3 mb-5 bg-body-tertiary px-3 pt-3 pb-5">
+					<div class="mx-auto my-3 mb-5 px-3 pb-5" style="max-width:600px;">
 						<div class="d-flex align-items-center position-relative">
-							<img src="/assets/img/akun.png" width="60" class="me-2">
-							<span class="h2 text-primary m-0 p-0">Pendaftaran Akun</span>
-							<a href="#" class="h7 ms-1" style="margin-top:-20px;">
-								<i class="bi bi-info-circle h6"></i>
+							<img src="/assets/img/akun.png" width="30" class="me-2">
+							<span class="h5 text-primary m-0 p-0">Pendaftaran Akun</span>
+							<a href="#" class="h8 ms-1" style="margin-top:-20px;">
+								<i class="bi bi-info-circle "></i>
 							</a>
 						</div>
 						<hr class="mb-3">
@@ -45,7 +38,7 @@
 										<div class="card role-card h-100 bg-primary rounded-5" data-role="1" role="button" tabindex="0">
 											<div class="card-body text-center text-white">
 												<i class="bi bi-globe" style="font-size:1.8rem;"></i>
-												<h6 class="mt-2 h7">Pengguna</h6>
+												<h6 class="mt-2 h8">Pengguna</h6>
 											</div>
 										</div>
 									</div>
@@ -53,7 +46,7 @@
 										<div class="card role-card h-100 bg-primary rounded-5 opacity-25" data-role="2" role="button" tabindex="0">
 											<div class="card-body text-center text-white">
 												<i class="bi bi-building-fill" style="font-size:1.8rem;"></i>
-												<h6 class="mt-2 h7">Staff</h6>
+												<h6 class="mt-2 h8">Staff</h6>
 											</div>
 										</div>
 									</div>
@@ -61,7 +54,7 @@
 										<div class="card role-card h-100 bg-primary rounded-5 opacity-25" data-role="3" role="button" tabindex="0">
 											<div class="card-body text-center text-white">
 												<i class="bi bi-building-fill-gear" style="font-size:1.8rem;"></i>
-												<h6 class="mt-2 h7">Admin</h6>
+												<h6 class="mt-2 h8">Admin</h6>
 											</div>
 										</div>
 									</div>
@@ -113,12 +106,11 @@
 								<span id="submitText">Daftar Sekarang</span>
 							</button>
 						</form>
-						<span class="float-end pt-4 h7"><?= $credit;?></span>
 					</div>
 
 				</div>
 
-				<div id="successMessage" class="d-none text-center mx-auto" style=max-width:600px;>
+				<div id="successMessage" class="d-none text-center mx-auto" style="max-width:600px;margin-top:5rem;">
 					<div class="alert alert-success p-5 rounded shadow-sm">
 						<i class="bi bi-check-circle-fill text-success mb-3" style="font-size:3rem;"></i>
 						<h4 class="mb-3">Pendaftaran Berhasil!</h4>

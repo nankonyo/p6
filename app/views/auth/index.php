@@ -1,15 +1,6 @@
 
-            <style>
-				
-			    .login-card {
-			      max-width: 400px;
-			      border-radius: 10px;
-			      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-			    }
-
-			  </style>
 				<div class="container">
-					<div class="login-card text-center mx-auto my-3 mb-5 bg-body-tertiary px-3 py-5">
+					<div class="text-center mx-auto my-3 mb-5 px-3 py-5" style="max-width:400px;">
 						<div class="mb-3 signin-logo"><img src="/assets/img/logo.png" width="80"></div>
 						<h5 class="mb-3">Sign in</h5>
 						<p class="mb-4">Masuk ke Akun kamu!</p>

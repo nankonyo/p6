@@ -25,7 +25,6 @@ class AuthMiddleware
     public function authHandle()
     {
         if (Session::get('user_logged_in')) {
-            // Optional: kamu bisa tambahkan checkDevice() di sini juga jika ingin
             $redir = urldecode($_GET['redir'] ?? '') ?: '/dashboard';
             header('Location: ' . $redir);
             exit;

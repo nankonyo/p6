@@ -6,36 +6,49 @@ class DeviceInfoHelper
 {
     public static function getDeviceInfo($userAgent)
     {
+        // Cek apakah info sudah tersimpan di session
+        if (isset($_SESSION['device_info'])) {
+            $deviceInfo = $_SESSION['device_info'];
+            $deviceInfo['from_cache'] = true;
+            return $deviceInfo;
+        }
+
         // Ambil info dari user agent
         $parser = new \WhichBrowser\Parser($userAgent);
         $browser = $parser->browser->name . ' ' . ($parser->browser->version ? $parser->browser->version->value : 'Unknown');
         $os = $parser->os->name . ' ' . ($parser->os->version ? $parser->os->version->value : 'Unknown');
         $device = $parser->device->type;
 
-        // Gunakan metode deteksi IP yang lebih lengkap
+        // Ambil IP client
         $ipAddress = self::getClientIp();
 
-        // Resolusi host name dari IP
+        // Resolusi host name
         $hostName = gethostbyaddr($ipAddress);
 
-        // Ambil lokasi dengan IPInfo atau sejenisnya
-        $accessKey = $_ENV['API_IPINFO_KEY'];
+        // Ambil lokasi dari IP dengan API
+        $accessKey = $_ENV['API_IPINFO_KEY'] ?? '';
         $location = self::getLocationFromIP($ipAddress, $accessKey);
 
         $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? $userAgent;
 
-        return [
+        $deviceInfo = [
             'browser' => $browser,
             'os' => $os,
             'device' => $device,
             'ip_address' => $ipAddress,
             'host_name' => $hostName,
             'location' => $location,
-            'user_agent' => $user_agent
+            'user_agent' => $user_agent,
+            'from_cache' => false
         ];
+
+        // Simpan ke session
+        $_SESSION['device_info'] = $deviceInfo;
+
+        return $deviceInfo;
     }
 
-    // Fungsi tambahan untuk mengambil IP asli
+    // Ambil IP asli dari client
     private static function getClientIp()
     {
         $keys = [
@@ -62,11 +75,15 @@ class DeviceInfoHelper
         return $_SERVER['REMOTE_ADDR'] ?? 'UNKNOWN';
     }
 
-
+    // Ambil lokasi berdasarkan IP
     public static function getLocationFromIP($ipAddress, $accessKey)
     {
+        if (empty($accessKey)) {
+            return ['city' => 'Unknown', 'region' => 'Unknown', 'country' => 'Unknown'];
+        }
+
         $url = "http://ipinfo.io/{$ipAddress}/json?token={$accessKey}";
-        $response = file_get_contents($url);
+        $response = @file_get_contents($url);
 
         if ($response === FALSE) {
             return ['city' => 'Unknown', 'region' => 'Unknown', 'country' => 'Unknown'];
@@ -80,6 +97,7 @@ class DeviceInfoHelper
         ];
     }
 
+    // Buat hash identifier dari data perangkat
     public static function generateIdentifier(array $deviceInfo)
     {
         $raw = implode('|', [

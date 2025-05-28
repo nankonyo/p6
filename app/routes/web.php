@@ -16,12 +16,15 @@ $router = new Route();
 
 $router->get('/', 'LandingController@index');
 
-$router->get('/auth', 'AuthController@index', [[AuthMiddleware::class, 'authHandle']]);
 $router->post('/auth', 'AuthController@signin');
 $router->get('/logout', 'AuthController@logout');
 
 $router->get('/register', 'RegisterController@index');
 $router->post('/register', 'RegisterController@store');
+
+$router->post('/verify/send-email', 'VerifyController@sendVerificationEmail');
+$router->get('/verify/email-konfirm', 'VerifyController@konVerificationEmail');
+$router->get('/verify/device-status', 'VerifyController@checkDeviceStatus');
 
 
 
@@ -31,12 +34,11 @@ $router->post('/register', 'RegisterController@store');
 // ===================
 
 // Menambahkan middleware AuthMiddleware pada /dashboard
+$router->get('/auth', 'AuthController@index', [[AuthMiddleware::class, 'authHandle']]);
 $router->get('/dashboard', 'DashboardController@index', [[AuthMiddleware::class, 'UserHandle']]);
 $router->get('/account', 'AccountController@index', [[AuthMiddleware::class, 'UserHandle']]);
 $router->get('/verify/device', 'VerifyController@device', [[AuthMiddleware::class, 'UserHandle']]);
-$router->post('/verify/send-email', 'VerifyController@sendVerificationEmail');
-$router->get('/verify/email-konfirm', 'VerifyController@konVerificationEmail');
-$router->get('/verify/device-status', 'VerifyController@checkDeviceStatus');
+
 
 
 return $router;

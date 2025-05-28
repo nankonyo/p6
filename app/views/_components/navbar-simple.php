@@ -1,5 +1,5 @@
                
-                <nav class="navbar navbar-expand-md p-0 border-0 shadow-sm bg-body-tertiary" style="height:60px;">
+                <nav class="navbar navbar-expand-md p-0 border-0 shadow-sm bg-body-tertiary fixed-top" style="height:60px;">
                     <div class="container">
                         <div class="d-flex justify-content-between flex-grow-1">
                             <!-- Menu Navbar -->

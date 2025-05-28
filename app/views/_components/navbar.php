@@ -107,11 +107,6 @@
                                     <a class="dropdown-item theme-option rounded" data-theme="auto" href="#"><i class="bi bi-laptop"></i> Default System</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modulModal" style="font-size: 1.2rem;">
-                                    <i class="bi bi-grid-3x3-gap"></i>
-                                </a>
-                            </li>
                             <li class="nav-item me-2">
                                 <a class="nav-link" href="/auth" style="font-size:1.2rem;">
                                    <i class="bi bi-person-circle"></i>
@@ -171,11 +166,6 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" style="font-size:1.2rem;" data-bs-toggle="modal" data-bs-target="#modulModal">
-                                    <i class="bi bi-grid-3x3-gap" style="transform: scale(1.3); display: inline-block;"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/auth" style="font-size:1.3rem;">
                                    <i class="bi bi-person-circle" style="transform: scale(1.3); display: inline-block;"></i>
                                 </a>
@@ -201,7 +191,22 @@
                     <a class="nav-link dropdown-toggle" href="#" id="layananDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Layanan
                     </a>
-                    <ul class="dropdown-menu pb-5 w-100 px-2" aria-labelledby="layananDropdown">
+                    <ul class="dropdown-menu w-100 px-2" aria-labelledby="layananDropdown">
+                        <li>
+                            <a class="dropdown-item rounded" href="#">
+                                <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="20"> Pelatihan
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item rounded" href="#">
+                                <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="20"> Pelatihan
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item rounded" href="#">
+                                <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="20"> Pelatihan
+                            </a>
+                        </li>
                         <li>
                             <a class="dropdown-item rounded" href="#">
                                 <img src="/assets/img/pelatihan.png" class="me-1" alt="Gambar" height="20"> Pelatihan
@@ -223,58 +228,18 @@
             </div>
             <!---------------------- end offcanvas---------------------->
 
-             <!---------------------- Modal Modul ---------------------->
-            <div class="modal fade mt-5" id="modulModal" tabindex="-1" aria-labelledby="modulModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content border-0 pb-4">
-                        <div class="modal-header border-0 bg-info">
-                            <h6 class="modal-title text-white" id="modulModalLabel">Modul LPAP</h6>
-                            <button type="button" class="btn-close white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body custom-scroll" id="modalScrollBody">
-                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-
-                                <div class="col-4">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="text-center h-100 border-0 pt-0">
-                                            <img src="/assets/img/akun.png" class="card-img-top p-4" alt="Gambar">
-                                            <div class="card-body p-0">
-                                                <h6 class="card-title text-primary line-clamp-2">Akun Saya</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="text-center h-100 border-0 pt-0">
-                                            <img src="/assets/img/drive.png" class="card-img-top p-4" alt="Gambar">
-                                            <div class="card-body p-0">
-                                                <h6 class="card-title text-primary line-clamp-2">Penyimpanan</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                 <!---------------------- END Modal Modul ---------------------->
-
             <!-- Modal Search -->
             <div class="modal fade mt-5" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content border-0 pb-3">
                         <div class="modal-header border-0 flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between align-items-center">
-                                <h6 class="modal-title mb-0">Pencarian</h6>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h6 class="modal-title mb-3">Pencarian</h6>
+                                <button type="button" class="btn-close mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <input type="search" id="searchInput" class="form-control w-100" placeholder="Cari sesuatu...">
                         </div>
-                        <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
+                        <div class="modal-body py-0" style="max-height: 300px; overflow-y: auto;">
                             <ul id="suggestionList" class="list-group shadow-none">
                                 <!-------list hire-------->
                             </ul>

@@ -17,7 +17,7 @@ class AuthController extends Controller
         $fullUrl = UrlHelpers::getFullUrl();
         $pathOnly =UrlHelpers::getPathOnly();
         View::render('auth/index', [
-            'layout' => '_layouts/simple',
+            'layout' => '_layouts/blank',
             'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
             'description' => 'description home',
             'keywords' => 'keywords home',
@@ -119,7 +119,7 @@ class AuthController extends Controller
             'location_region'   => $deviceInfo['location']['region'],
             'location_country'  => $deviceInfo['location']['country'],
             'user_agent'        => substr($deviceInfo['user_agent'], 0, 256),
-            'stat'              => $stat // Tentukan nilai stat
+            'stat'              => $stat
         ];
 
         // Simpan atau update data perangkat

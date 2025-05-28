@@ -18,7 +18,7 @@ class RegisterController extends Controller
         $pathOnly = UrlHelpers::getPathOnly();
         $credit = $_ENV['APP_CREDIT'];
         View::render('register/index', [
-            'layout' => '_layouts/simple',
+            'layout' => '_layouts/blank',
             'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
             'description' => 'description home',
             'keywords' => 'keywords home',

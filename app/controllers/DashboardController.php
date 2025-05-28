@@ -13,22 +13,42 @@ class DashboardController extends Controller
     
     public function index()
     {
-        $fullUrl = UrlHelpers::getFullUrl();
-        $pathOnly =UrlHelpers::getPathOnly();
-        $redirSource=UrlHelpers::getRedirSource();
-        View::render('dashboard/index', [
-            'layout' => '_layouts/dashboard',  // Menentukan layout yang akan digunakan
-            'title' => 'LEMBAGA PENGEMBANGAN APARATUR PEMERINTAH - LPAP',
+        $userSession = Session::get('user');
+        $userId = isset($userSession['id']) ? (int) $userSession['id'] : null;
+        $userModel = new User();
+        $user = $userModel->findById($userId);
+
+        if (!$user) {
+            UrlHelpers::redirect('/login');
+        }
+
+        $idRole = (int) $user['id_role'];
+        $viewPath = 'dashboard/pengguna'; // default view
+
+        switch ($idRole) {
+            case 2:
+                $viewPath = 'dashboard/staff';
+                break;
+            case 3:
+                $viewPath = 'dashboard/admin';
+                break;
+        }
+
+        View::render($viewPath, [
+            'layout' => '_layouts/dashboard',
+            'title' => 'Dashboard',
             'description' => 'description home',
             'keywords' => 'keywords home',
             'author' => 'author home',
             'type' => 'website',
             'image' => 'image',
             'robots' => 'index, follow',
-            'full_url' => $fullUrl,
-            'path_only' => $pathOnly,
-            'redir_source' => $redirSource,
-            'ogType' => 'website'
+            'full_url' => UrlHelpers::getFullUrl(),
+            'path_only' => UrlHelpers::getPathOnly(),
+            'redir_source' => UrlHelpers::getRedirSource(),
+            'ogType' => 'website',
+            'user' => $user,
         ]);
     }
+
 }
